@@ -1,0 +1,47 @@
+<html>	
+<title>Ubuntu Server</title>
+
+<header>
+   	<h1>Macbeth Adolfo Carrillo Ibarra</h1>
+				<ul>
+					<li><a href="instalacion.html">1.-Instalacion</a></li>
+					<li><a href="paquetes.html">2.-Actualizacion de paquetes e Instalacion</a></li>
+					<li><a href="apache.html">3.-Instalacion Apache</a></li>
+					<li><a href="sql.html">4.-Conexion a MySql</a></li>
+					<li><a href="Cvirtual.html">5.-Configuracion de Virtual Hosts</a></li>
+					<li><a href="Prueba.html">6.-Prueba Final</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+<body>
+	<h2>Configuracion del VirtualHost</h2>
+<p>Primero tenemos que entrar a la carpeta /etc/apache2/sites-available ,una vez en esa carpeta ejecutamos el comando sudo nano library.com.conf para modificarlo.</p>
+<p>Dentro del archivo, escribimos este codigo:</p>
+<ul>
+		<li>VirtualHost*:80></li>
+		<li>Server Name library.com </li>
+		<li>Server Alias www.library.com </li>
+		<li> Server Admin</li>
+		<li>DocumentRoot /var/log/library.com-error.log</li>
+		<li>CustomLog /var/log/library.com-acces.log. common</li>
+		<li>ServerName</li>
+		<li>/VirtualHost></li>
+   </ul>
+<p>Vemos que las carpetas estén en el siguiente orden /etc/apache2/sites-available/ escribiendo el comando ls .</p>
+<p>En la carpeta sites-available escribe:
+		<p>sudo a2ensite library.com (para habilitar el dominio)</p>
+<p>Reinicia el servicio de apache con el comando sudo service apache2 restart</p>
+<p>Entra a la carpeta /etc/hosts/ y agrega lo siguiente:</p>
+	<ul>
+		<li>127.0.0.1 library.com</li>
+		<li>127.0.0.1 www.library.com</li>
+</ul>
+<p>Guardamos con las teclas Ctrl+O</p>
+<p>Una vez fuera de la maquina virtual en consola entra a la siguiente carpeta: /etc/hosts y agrega el ip de la red anfitrion + nombre del dominio. Por ejemplo: </p>
+<ul>
+		<li>192.168.56.101 library.com</li>
+		<li>192.168.56.101 www.library.com</li>
+</ul>
+</body>
+</html>

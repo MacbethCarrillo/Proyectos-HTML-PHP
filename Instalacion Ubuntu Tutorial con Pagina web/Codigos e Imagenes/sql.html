@@ -1,0 +1,42 @@
+<html>	
+<title>Ubuntu Server</title>
+
+<header>
+   	<h1>Macbeth Adolfo Carrillo Ibarra</h1>
+				<ul>
+					<li><a href="instalacion.html">1.-Instalacion</a></li>
+					<li><a href="paquetes.html">2.-Actualizacion de paquetes e Instalacion</a></li>
+					<li><a href="apache.html">3.-Instalacion Apache</a></li>
+					<li><a href="sql.html">4.-Conexion a MySql</a></li>
+					<li><a href="Cvirtual.html">5.-Configuracion de Virtual Hosts</a></li>
+					<li><a href="Prueba.html">6.-Prueba Final</a></li>
+				</ul>
+		</div>
+	</header>
+<body>
+	<h2>Conectar MySQL</h2>
+<p>Para poder conectar MySQL necesitamos permisos de administrador, para obtener los permisos debemos insertar el comando siguiente</p>
+<p style=color:red>/library.com/db$ sudo -i</p>
+    
+<p>Ya que tengamos permisos del root ejecutamos el comando mysql, ya dentro de mysql pondremos el comando source /var/www/html/, http://library.com/db/library.sql", library.com/db/library.sql, ya tenemos la base de datos, tenemos que poner el comando show databases; y nos mostrara las bases de datos que existen.</p>
+	<h2>Crear un usuario en MySQL</h2>
+<p>Para crear un usuario se utiliza el comando</p><img src="sql2.png">
+    
+<p>Tenemos que darle permisos de administrador al usuario para poder editar las bases de datos con el comando</p><img src="sql3.png">
+	<h2>Clonar el repositorio</h2>
+<p>Para clonar el repositorio tenemos que movernos a la carpeta html con el comando cd/var/www/html, ya que nos movamos de carpeta tenemos que insertar el siguiente comando</p><img src="sql4.png">
+    
+<p>Ya que este clonado el repositorio tendremos que cambiarle el nombre ejecutando el comando</p> <img src="sql5.png">
+   	<h2>Cambiar usuario y contraseña</h2>
+<p>Para cambiar el usuario y contraseña ponemos el siguiente comando</p><img src="sql6.png">
+    
+<p>En la siguiente ventana tenemos que editar el usuario y la contraseña.</p><img src="slq7.png">
+	<h2>Activar la base de datos</h2>
+<p>Para poner en uso la base de datos tenemos que poner el comando</p><img src="sql7.png">
+    
+    
+<p>Lo siguiente es poner el comando sudo nano library.sql, al entrar aparecera un editor de archivos, lo siguiente sera poner USE `library`;  despues damos "ctrl + o" y "ctrl + x"</p>
+<p>Al salir de nano ejecutamos el comando cat library.sql, para que se guarden los cambios</p>
+    
+</body>
+</html>

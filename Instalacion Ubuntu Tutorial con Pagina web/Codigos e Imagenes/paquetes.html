@@ -1,0 +1,32 @@
+<html>	
+<title>Ubuntu Server</title>
+
+<header>
+   	<h1>Macbeth Adolfo Carrillo Ibarra</h1>
+				<ul>
+					<li><a href="instalacion.html">1.-Instalacion</a></li>
+					<li><a href="paquetes.html">2.-Actualizacion de paquetes e Instalacion</a></li>
+					<li><a href="apache.html">3.-Instalacion Apache</a></li>
+					<li><a href="sql.html">4.-Conexion a MySql</a></li>
+					<li><a href="Cvirtual.html">5.-Configuracion de Virtual Hosts</a></li>
+					<li><a href="Prueba.html">6.-Prueba Final</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+<body>
+	<h2>Actualizacion de paquetes y Instalacion</h2>
+
+<p>Primero debemos actualizar los paquetes de ubuntu para eso escribimos el comando"sudo update" y apareceran los paquetes por actualizar y los que ya estan actualizados, ahora escribimos sudo upgrade, damos enter y ponemos la s y enter para que se actualizen los paquetes</p>
+<p>Despues de esperar a que se actualizen los paquetes los instalamos.</p>
+<p>Para instalarlos ejecutamos el comando apt search httpd y nos apareceran los paquetes para instalar</p>
+<p>Buscaremos el paquete de mysql y php ya que mas adelante lo utilizaremos para eso ejecutamos el comando apt search mysql, apt search php</p>
+<p>y ejeutamos el comando sudo apt install mysql-server, sudo apt install php y escribimos s y enter para instalarlos.</p>
+<p>Despues de instalarlos lo corremos para eso ejecutamos el comando sudo service mysql start y empezara a correr mysql, si queremos detenerlo escribimos sudo service mysql stop y se detendra.</p>
+<br></br>
+<p>para probarlo tenemos que ejecutar el comando ifconfig y nos apareceran las redes y nos saldra las ips</p>
+<p>Ahora copiamos la ip que nos dio el ubuntu y lo escribimos en la url de nuestro navegador</p><img src="ips.jpeg">
+<p>Y nos saldra la pagina oficial de ubuntu.</p>
+
+</body>
+</html>
