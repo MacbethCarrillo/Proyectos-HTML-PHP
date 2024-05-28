@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD Software</title>
+    <link rel="stylesheet" href="estiloIndex.css">  
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" id="ventas">Ventas</a>
+        <a href="inventario.html" id="inventarios">Inventarios</a>
+        <a href="reporte.html" id="reporte">Reporte</a>
+    </nav>
+    <a id="salir" href="#">Salir</a>
+</header>
+
+<div class="container">
+    <div class="actions">
+        <button onclick="cancelarVenta()">Cancelar Venta</button>
+        <button onclick="realizarVenta()">Realizar Venta</button>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="productInput" placeholder="Inserte producto" onkeypress="handleSearch(event)">
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Precio Total</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+            
+        </tbody>
+    </table>
+    
+    <h1 id="total">Total: $0.00</h1>
+
+</div>
+
+<script src="scriptsIndex.js"></script>
+</body>
+</html>

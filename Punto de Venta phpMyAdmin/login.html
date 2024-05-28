@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #333;
+            max-width: 300px;
+            width: 100%;
+        }
+        .login-form h2 {
+            margin-bottom: 20px;
+        }
+        .login-form img {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 150px;
+            width: 100%;
+            height: auto;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #283593;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background-color: #218838;
+        }
+        /* Estilos para la ventana emergente */
+        .alert {
+            display: none;
+            padding: 10px;
+            background-color: #f44336;
+            color: white;
+            border-radius: 4px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <img src="logo.png" alt="Logo">
+        <h2>Iniciar Sesión</h2>
+        <form id="login-form" action="login.php" method="post">
+            <input type="text" name="username" id="username" placeholder="Nombre de Usuario" required>
+            <input type="password" name="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <!-- Ventana emergente para mensajes de error -->
+        <div class="alert" id="alertMessage"></div>
+    </div>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            if (username === 'usuario1' && password === '123456789') {
+                // Inicio de sesión correcto, no hacer nada
+            } else {
+                // Mostrar la ventana emergente de error
+                var alertMessage = document.getElementById('alertMessage');
+                alertMessage.innerHTML = 'Usuario o contraseña incorrectos';
+                alertMessage.style.display = 'block';
+                event.preventDefault(); // Evitar enviar el formulario
+            }
+        });
+    </script>
+</body>
+</html>

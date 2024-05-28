@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD Software</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html">Ventas</a>
+        <a href="inventario.html">Inventarios</a>
+        <a href="reporte.html">Reporte</a>
+    </nav>
+    <a id="salir" href="#">Salir</a>
+</header>
+
+<div class="container">
+    <div class="form-container">
+        <h1>Sistema De Inventario</h1>
+        <form id="product-form" method="post" action="insert_product.php">
+            <input type="text" id="product-id" name="product-id" placeholder="Id del producto">
+            <input type="text" id="product-name" name="product-name" placeholder="Nombre del producto">
+            <input type="text" id="product-price" name="product-price" placeholder="Precio de compra">
+            <input type="text" id="product-sale" name="product-sale" placeholder="Precio de venta">
+            <input type="text" id="product-inventory" name="product-inventory" placeholder="Cantidad en stock">
+            <input type="text" id="product-stock" name="product-stock" placeholder="Piso de venta">
+            <button type="submit">Registrar nuevo producto</button>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Buscar producto">
+                <button type="button" id="search-button">Buscar</button>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del Producto</th>
+                    <th>Precio de compra</th>
+                    <th>Precio de venta</th>
+                    <th>Cantidad en stock</th>
+                    <th>Piso de venta</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody id="inventory-table-body">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <p id="modal-message">El ID del producto ya está registrado.</p>
+    </div>
+</div>
+
+<script>
+ 
+    function mostrarVentanaEmergente(mensaje) {
+   
+        var modal = document.createElement('div');
+        modal.classList.add('modal');
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close" onclick="cerrarVentanaEmergente()">&times;</span>
+                <p>${mensaje}</p>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    function cerrarVentanaEmergente() {
+        var modal = document.querySelector('.modal');
+        if (modal) {
+            modal.remove();
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        var productForm = document.getElementById('product-form');
+        productForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            fetch('insert_product.php', {
+                method: 'POST',
+                body: new FormData(productForm)
+            })
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('Error al registrar el producto');
+                }
+                return response.text();
+            })
+            .then(function(data) {
+                if (data.startsWith('Error')) {
+                    mostrarVentanaEmergente(data); // Mostrar la ventana emergente con el mensaje de error
+                } else {
+                    window.location.reload();
+                    limpiarFormulario(); // Limpia el formulario después de actualizar la tabla
+                }
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+                alert('Error al registrar el producto. El producto ya existe.');
+            });
+        });
+    });
+
+    function limpiarFormulario() {
+        document.getElementById('product-form').reset();
+    }
+</script>
+<script src="scriptsInventario.js"></script>
+
+</body>
+</html>

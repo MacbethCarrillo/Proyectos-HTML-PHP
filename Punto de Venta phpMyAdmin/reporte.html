@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD Software</title>
+    <link rel="stylesheet" href="estiloReporte.css">  
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" id="ventas">Ventas</a>
+        <a href="inventario.html" id="inventarios">Inventarios</a>
+        <a href="reporte.html" id="reporte">Reporte</a>
+    </nav>
+    <a id="salir" href="#">Salir</a>
+</header>
+
+<div class="container">
+    <div class="date-picker">
+        <label for="dateInput">Selecciona una fecha:</label>
+        <input type="date" id="dateInput">
+        <button onclick="filtrarVentasPorFecha()">Filtrar</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID Venta</th>
+                <th>ID Producto</th>
+                <th>Nombre del Producto</th>
+                <th>Precio Venta</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Cantidad Total</th>
+            </tr>
+        </thead>
+        <tbody id="ventasTableBody">
+        </tbody>
+    </table>
+</div>
+
+<script src="scriptsReporte.js"></script>
+</body>
+</html>
