@@ -68,6 +68,7 @@ nav a {
     width: 100%;
     height: auto;
     overflow: hidden;
+    margin-bottom: 0; /* Ajusta el margen inferior a 0 */
 }
 
 .carousel-images {
@@ -105,15 +106,16 @@ nav a {
 .carousel-dots button.active {
     background-color: #ffffff; /* Color del punto activo */
 }
+
 /* Estilos para el botón del menú (solo visible en pantallas pequeñas) */
 .menu-btn {
     display: none;
     background-color: white;
     color: #10216f;
-    font-size: 25px;
-    padding: 1px 8px;
+    font-size: 26px;
+    padding: 3px 10px;
     cursor: pointer;
-    border-radius: 5px; /* Menos redondeado */
+    border-radius: 6px; /* Menos redondeado */
     border: 2px solid #10216f;
     transition: none; /* Sin efecto de hover */
 }
@@ -159,7 +161,7 @@ nav a {
         display: flex;
         flex-direction: column;
         gap: 15px;
-        max-height: 300px; /* Altura máxima que el menú puede alcanzar al desplegarse */
+        max-height: 220px; /* Altura máxima que el menú puede alcanzar al desplegarse */
     }
 
     .menu-btn.active {
@@ -191,5 +193,60 @@ nav a {
 
     nav a:first-child {
         border-top: none; /* Quitar línea de separación del primer elemento */
+    }
+}
+
+.nosotros {
+    display: flex;
+    align-items: flex-start; /* Alinea verticalmente el contenido en la parte superior */
+    background-color: white;
+    padding: 0; /* Elimina el padding para ajustar la alineación */
+    margin-top: 0; /* Elimina el margen superior para alinear con el carrusel */
+}
+
+.texto-nosotros {
+    flex: 1;
+    width: 50%; /* El texto ocupará el 50% de la pantalla en pantallas grandes */
+    margin-right: 0; /* Elimina el margen derecho */
+    color: #10216f;
+    text-align: justify;
+    padding: 20px; /* Agrega padding alrededor del texto */
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+}
+
+.texto-nosotros h1 {
+    font-size: 3em; /* Ajusta el tamaño del encabezado */
+    text-align: center;
+    margin: 0 0 20px 0; /* Elimina el margen superior y ajusta el margen inferior */
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 980px) {
+    .nosotros {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 0; /* Quitar el margen superior en pantallas pequeñas */
+    }
+
+    .texto-nosotros {
+        width: 100%; /* El texto ocupará el 100% en pantallas pequeñas */
+        margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
+        padding: 20px; /* Agrega padding en pantallas pequeñas */
+        box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+        font-size: 16px; /* Ajusta el tamaño de la fuente para pantallas pequeñas */
+    }
+
+    .texto-nosotros h1 {
+        font-size: 2em; /* Ajusta el tamaño del encabezado para pantallas pequeñas */
+    }
+
+    .imagen-nosotros {
+        width: 100%; /* La imagen también ocupará el 100% en pantallas pequeñas */
+        margin-top: 20px;
+        align-items: center; /* Centra la imagen en pantallas pequeñas */
+    }
+
+    .imagen-nosotros img {
+        max-width: 100%; /* Asegura que la imagen no sea más grande que el contenedor */
     }
 }
