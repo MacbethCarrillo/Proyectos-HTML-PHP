@@ -62,6 +62,8 @@ nav a {
     border: 2px solid black;
 }
 
+/* ---------------------------------------DIV CARRUSEL DE IMAGENES--------------------------------- */
+
 /* Estilos para el carrusel */
 .carousel {
     position: relative;
@@ -196,57 +198,229 @@ nav a {
     }
 }
 
+
+/* ---------------------------------------DIV NOSOTROS--------------------------------- */
 .nosotros {
     display: flex;
-    align-items: flex-start; /* Alinea verticalmente el contenido en la parte superior */
+    align-items: flex-start;
     background-color: white;
     padding: 0; /* Elimina el padding para ajustar la alineación */
-    margin-top: 0; /* Elimina el margen superior para alinear con el carrusel */
+    margin: 0; /* Elimina margen superior e inferior */
 }
 
-.texto-nosotros {
+.texto-nosotros {   
     flex: 1;
-    width: 50%; /* El texto ocupará el 50% de la pantalla en pantallas grandes */
-    margin-right: 0; /* Elimina el margen derecho */
+    width: 50%;
+    margin-right: 0;
+    margin-top: 20px;
     color: #10216f;
     text-align: justify;
-    padding: 20px; /* Agrega padding alrededor del texto */
-    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .texto-nosotros h1 {
-    font-size: 3em; /* Ajusta el tamaño del encabezado */
+    font-size: 2.5em;
     text-align: center;
-    margin: 0 0 20px 0; /* Elimina el margen superior y ajusta el margen inferior */
+    margin: 0 0 20px 0; /* Margen inferior para separar el texto */
+}
+
+.imagen-nosotros img {
+    width: 100%;
+    display: block; /* Elimina espacios alrededor de la imagen */
+    margin: 0; /* Elimina margen */
+}
+
+.ver-mas-btn {
+    display: block; /* Cambia a block para que ocupe todo el espacio disponible */
+    margin: 20px auto; /* Asegura que el botón esté centrado horizontalmente */
+    padding: 10px 20px; 
+    background-color: #10216f; /* Color de fondo en azul */
+    color: white; 
+    font-size: 15px; 
+    font-weight: bold; /* Texto en negrita */
+    border-color: rgb(18, 7, 122);
+    cursor: pointer;
+    border-radius: 5px; /* Bordes ligeramente redondeados */
 }
 
 /* Ajuste para pantallas pequeñas */
 @media (max-width: 980px) {
+    .ver-mas-btn {
+        width: 50%; /* El botón ocupará el 50% del ancho en pantallas pequeñas */
+        padding: 15px; /* Ajuste del padding */
+        font-size: 16px; /* Tamaño de la fuente ajustado */
+    }
+}
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 980px) {
     .nosotros {
         flex-direction: column;
-        align-items: flex-start;
-        margin-top: 0; /* Quitar el margen superior en pantallas pequeñas */
+        margin: 0; /* Elimina margen superior e inferior */
     }
 
     .texto-nosotros {
-        width: 100%; /* El texto ocupará el 100% en pantallas pequeñas */
-        margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
-        padding: 20px; /* Agrega padding en pantallas pequeñas */
-        box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
-        font-size: 16px; /* Ajusta el tamaño de la fuente para pantallas pequeñas */
-    }
-
-    .texto-nosotros h1 {
-        font-size: 2em; /* Ajusta el tamaño del encabezado para pantallas pequeñas */
+        width: 100%;
+        padding: 20px;
     }
 
     .imagen-nosotros {
-        width: 100%; /* La imagen también ocupará el 100% en pantallas pequeñas */
-        margin-top: 20px;
-        align-items: center; /* Centra la imagen en pantallas pequeñas */
+        width: 100%;
     }
 
     .imagen-nosotros img {
-        max-width: 100%; /* Asegura que la imagen no sea más grande que el contenedor */
+        max-width: 100%;
     }
+}
+
+/* ---------------------------------------DIV Servicios--------------------------------- */
+.servicios {
+    background-color: #10216f;
+    text-align: center;
+    padding: 15px 20px;
+    margin: 0; /* Elimina cualquier margen */
+}
+
+.servicios h2 {
+    font-size: 2.5em;
+    color: #7dd557;
+    margin-bottom: 20px;
+}
+
+.servicios p {
+    color: white;
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+.recuadros-servicios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 5px;
+    margin-top: 40px;
+}
+
+
+.recuadroChico {
+    width: 150px;
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1; /* Cambiado de 0 a 1 */
+    transform: translateY(0); /* Cambiado para eliminar la animación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+.recuadroChico img {
+    margin-top: 15px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.texto-recuadroChico {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #10216f;
+    text-align: center; 
+
+}
+
+.btnCuadrosChicos {
+    display: block; /* Cambia a block para que ocupe todo el espacio disponible */
+    margin: 20px auto; /* Asegura que el botón esté centrado horizontalmente */
+    padding: 5px 10px; 
+    background-color: #10216f; /* Color de fondo en azul */
+    color: white; 
+    font-size: 15px; 
+    font-weight: bold; /* Texto en negrita */
+    border-color: rgb(18, 7, 122);
+    cursor: pointer;
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+}
+.recuadro {
+    width: 150px;
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1; /* Cambiado de 0 a 1 */
+    transform: translateY(0); /* Cambiado para eliminar la animación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 40px;
+
+}
+.recuadro img {
+    margin-top: 25px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0;
+}
+
+.texto-recuadro {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #10216f;
+    text-align: center; 
+    margin-bottom: 15px;
+}
+
+.btnCuadros {
+    display: block; /* Cambia a block para que ocupe todo el espacio disponible */
+    margin-bottom: 35px;
+    padding: 5px 10px; 
+    background-color: #10216f; /* Color de fondo en azul */
+    color: white; 
+    font-size: 15px; 
+    font-weight: bold; /* Texto en negrita */
+    border-color: rgb(18, 7, 122);
+    cursor: pointer;
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+}
+
+/* ---------------------------------------DIV Sucursales--------------------------------- */
+
+.sucursales {
+    display: flex;
+    align-items: flex-start;
+    background-color: white;
+    margin: 0; /* Elimina margen superior e inferior */
+    padding: 230px 20px;
+}
+
+.texto-sucursales h1 {
+    color: #7dd557;
+    font-size: 2.5em;
+    
+}
+
+.texto-sucursales {   
+    flex: 1;
+    width: 50%;
+    margin-right: 0;
+    margin-top: 20px;
+    text-align: justify;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.imagen-sucursales img {
+    width: 100%;
+    display: block; /* Elimina espacios alrededor de la imagen */
+    margin: 0; /* Elimina margen */
 }
