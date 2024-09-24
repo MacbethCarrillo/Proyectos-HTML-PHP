@@ -4,6 +4,7 @@ body {
 }
 
 header {
+    display: flex;
     background-color: #10216f;
     color: white;
     padding: 20px;
@@ -19,7 +20,7 @@ header {
 
 .logo {
     height: 60px;
-    margin-left: 38px;
+    margin-left: 1px;
     margin-right: 55px;
 }
 
@@ -57,14 +58,102 @@ nav a {
 }
 
 .button:hover {
-    background-color: #1631ac;
-    color: white;
+    background-color: #183196;
+    color:white;
     border: 2px solid black;
 }
 
+/* Estilos para el botón del menú (solo visible en pantallas pequeñas) */
+.menu-btn {
+    display: none;
+    background-color: white;
+    color: #10216f;
+    font-size: 26px;
+    padding: 3px 10px;
+    cursor: pointer;
+    border-radius: 6px; /* Menos redondeado */
+    border: 2px solid #10216f;
+    transition: none; /* Sin efecto de hover */
+}
+
+.menu-btn::before {
+    content: "☰"; /* Ícono de menú por defecto */
+}
+
+.menu-btn.active::before {
+    content: "✖"; /* Ícono de cerrar al activar */
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 1000px) {
+    header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        margin: 0;
+    }
+
+    .nav-container {
+        display: none;
+        width: 100%;
+        background-color: #10216f;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+        border-radius: 0 0 10px 10px;
+        transition: max-height 0.5s ease-in-out;
+        overflow: hidden;
+        max-height: 0;
+        z-index: 1;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-container.active {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-height: 220px; /* Altura máxima que el menú puede alcanzar al desplegarse */
+    }
+
+    .menu-btn.active {
+        background-color: white; /* Mantener el botón en blanco cuando está activo */
+    }
+
+    .menu-btn {
+        display: block;
+        margin-left: 10px;
+    }
+
+    .button {
+        display: none;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0; /* Eliminamos el espacio entre elementos para que las líneas de separación ocupen su lugar */
+        width: 100%;
+        padding: 10px;
+    }
+
+    nav a {
+        color: #7dd557;
+        text-align: center;
+        padding: 10px 0; /* Espacio interior para cada enlace */
+        border-top: 1px solid #ffffff60; /* Línea de separación superior */
+    }
+
+    nav a:first-child {
+        border-top: none; /* Quitar línea de separación del primer elemento */
+    }
+}
 /* ---------------------------------------DIV CARRUSEL DE IMAGENES--------------------------------- */
 
-/* Estilos para el carrusel */
 .carousel {
     position: relative;
     width: 100%;
@@ -109,95 +198,18 @@ nav a {
     background-color: #ffffff; /* Color del punto activo */
 }
 
-/* Estilos para el botón del menú (solo visible en pantallas pequeñas) */
-.menu-btn {
-    display: none;
-    background-color: white;
-    color: #10216f;
-    font-size: 26px;
-    padding: 3px 10px;
-    cursor: pointer;
-    border-radius: 6px; /* Menos redondeado */
-    border: 2px solid #10216f;
-    transition: none; /* Sin efecto de hover */
+@media(max-width: 400px){
+
+    .carousel-dots {
+        bottom: 20px;
+    }
+
+    .carousel-dots button {
+        width: 5px;
+        height: 12px;
+    }
+
 }
-
-.menu-btn::before {
-    content: "☰"; /* Ícono de menú por defecto */
-}
-
-.menu-btn.active::before {
-    content: "✖"; /* Ícono de cerrar al activar */
-}
-
-/* Media query para pantallas pequeñas */
-@media (max-width: 980px) {
-    header {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 20px;
-    }
-
-    .logo {
-        margin-right: 10px;
-    }
-
-    .nav-container {
-        display: none;
-        width: 100%;
-        background-color: #10216f;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 10px 0;
-        border-radius: 0 0 10px 10px;
-        transition: max-height 0.5s ease-in-out;
-        overflow: hidden;
-        max-height: 0;
-        z-index: 1;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .nav-container.active {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        max-height: 220px; /* Altura máxima que el menú puede alcanzar al desplegarse */
-    }
-
-    .menu-btn.active {
-        background-color: white; /* Mantener el botón en blanco cuando está activo */
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .button {
-        display: none;
-    }
-
-    nav {
-        display: flex;
-        flex-direction: column;
-        gap: 0; /* Eliminamos el espacio entre elementos para que las líneas de separación ocupen su lugar */
-        width: 100%;
-        padding: 10px;
-    }
-
-    nav a {
-        color: #7dd557;
-        text-align: center;
-        padding: 10px 0; /* Espacio interior para cada enlace */
-        border-top: 1px solid #ffffff60; /* Línea de separación superior */
-    }
-
-    nav a:first-child {
-        border-top: none; /* Quitar línea de separación del primer elemento */
-    }
-}
-
 
 /* ---------------------------------------DIV NOSOTROS--------------------------------- */
 .nosotros {
@@ -219,9 +231,16 @@ nav a {
     box-sizing: border-box;
 }
 
-.texto-nosotros h1 {
+.texto-nosotros h2 {
     font-size: 2.5em;
     text-align: center;
+    margin: 0 0 20px 0; /* Margen inferior para separar el texto */
+}
+
+.texto-nosotros p {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: justify;
     margin: 0 0 20px 0; /* Margen inferior para separar el texto */
 }
 
@@ -231,21 +250,31 @@ nav a {
     margin: 0; /* Elimina margen */
 }
 
+
 .ver-mas-btn {
-    display: block; /* Cambia a block para que ocupe todo el espacio disponible */
+    display: block;
     margin: 20px auto; /* Asegura que el botón esté centrado horizontalmente */
-    padding: 10px 20px; 
-    background-color: #10216f; /* Color de fondo en azul */
-    color: white; 
-    font-size: 15px; 
-    font-weight: bold; /* Texto en negrita */
-    border-color: rgb(18, 7, 122);
+    padding: 15px 25px; /* Aumenta el padding para hacerlo más grande */
+    background-color: #10216f; /* Color de fondo */
+    color: white;
+    font-size: 18px;
+    font-weight: regular;
+    border: 2px solid transparent; /* Agrega un borde transparente */
+    border-radius: 50px; /* Bordes redondeados */
     cursor: pointer;
-    border-radius: 5px; /* Bordes ligeramente redondeados */
+    transition: all 0.3s ease; /* Transición suave para hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
+.ver-mas-btn:hover {
+    background-color: #7dd557; /* Cambia el color de fondo al pasar el ratón */
+    color: #10216f; /* Cambia el color del texto */
+    border: 2px solid #10216f; /* Borde visible en hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    transform: translateY(-2px); /* Sutil elevación al pasar el ratón */
+}
 /* Ajuste para pantallas pequeñas */
-@media (max-width: 980px) {
+@media (max-width: 1000px) {
     .ver-mas-btn {
         width: 50%; /* El botón ocupará el 50% del ancho en pantallas pequeñas */
         padding: 15px; /* Ajuste del padding */
@@ -253,7 +282,7 @@ nav a {
     }
 }
 /* Ajuste para pantallas pequeñas */
-@media (max-width: 980px) {
+@media (max-width: 1000px) {
     .nosotros {
         flex-direction: column;
         margin: 0; /* Elimina margen superior e inferior */
@@ -262,8 +291,12 @@ nav a {
     .texto-nosotros {
         width: 100%;
         padding: 20px;
+        text-align: center;
     }
-
+    .texto-nosotros p{
+        text-align: center;
+        font-size: 1em;
+    }
     .imagen-nosotros {
         width: 100%;
     }
@@ -277,14 +310,16 @@ nav a {
 .servicios {
     background-color: #10216f;
     text-align: center;
-    padding: 15px 20px;
+    padding: 60px 40px;
     margin: 0; /* Elimina cualquier margen */
+    margin-bottom: 0; /* Asegura que no haya margen en la parte inferior */
 }
 
 .servicios h2 {
     font-size: 2.5em;
     color: #7dd557;
     margin-bottom: 20px;
+    margin-top: 0;
 }
 
 .servicios p {
@@ -292,6 +327,7 @@ nav a {
     font-size: 1.2em;
     max-width: 800px;
     margin: 0 auto;
+    margin-top: 20px;
 }
 
 
@@ -305,7 +341,7 @@ nav a {
 
 
 .recuadroChico {
-    width: 150px;
+    width: 150px;           /*WIDTH: 120 */
     height: 200px;
     background-color: white;
     border-radius: 10px;
@@ -328,6 +364,7 @@ nav a {
 }
 
 .texto-recuadroChico {
+    margin-bottom: 10px;
     font-size: 1.2em;
     font-weight: bold;
     color: #10216f;
@@ -336,19 +373,32 @@ nav a {
 }
 
 .btnCuadrosChicos {
-    display: block; /* Cambia a block para que ocupe todo el espacio disponible */
-    margin: 20px auto; /* Asegura que el botón esté centrado horizontalmente */
-    padding: 5px 10px; 
-    background-color: #10216f; /* Color de fondo en azul */
-    color: white; 
-    font-size: 15px; 
-    font-weight: bold; /* Texto en negrita */
-    border-color: rgb(18, 7, 122);
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 12px;
+    padding: 10px 20px; /* Aumenta el padding para hacerlo más grande */
+    background-color: #10216f; /* Color de fondo */
+    color: white;
+    font-size: 15px;
+    font-weight: regular    ;
+    border: 2px solid transparent; /* Agrega un borde transparente */
+    border-radius: 50px; /* Bordes redondeados */
     cursor: pointer;
-    border-radius: 5px; /* Bordes ligeramente redondeados */
+    transition: all 0.3s ease; /* Transición suave para hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
+
+.btnCuadrosChicos:hover {
+    background-color: #7dd557; /* Cambia el color de fondo al pasar el ratón */
+    color: #10216f; /* Cambia el color del texto */
+    border: 2px solid #10216f; /* Borde visible en hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    transform: translateY(-2px); /* Sutil elevación al pasar el ratón */
+}
+
+
 .recuadro {
-    width: 150px;
+    width: 150px; /*WIDTH: 120 */
     height: 200px;
     background-color: white;
     border-radius: 10px;
@@ -380,47 +430,305 @@ nav a {
 }
 
 .btnCuadros {
-    display: block; /* Cambia a block para que ocupe todo el espacio disponible */
+    display: block;
     margin-bottom: 35px;
-    padding: 5px 10px; 
-    background-color: #10216f; /* Color de fondo en azul */
-    color: white; 
-    font-size: 15px; 
-    font-weight: bold; /* Texto en negrita */
-    border-color: rgb(18, 7, 122);
+    padding: 10px 20px; /* Aumenta el padding para hacerlo más grande */
+    background-color: #10216f; /* Color de fondo */
+    color: white;
+    font-size: 15px;
+    font-weight: regular;
+    border: 2px solid transparent; /* Agrega un borde transparente */
+    border-radius: 50px; /* Bordes redondeados */
     cursor: pointer;
-    border-radius: 5px; /* Bordes ligeramente redondeados */
+    transition: all 0.3s ease; /* Transición suave para hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
+
+/* Efecto hover */
+.btnCuadros:hover {
+    background-color: #7dd557; /* Cambia el color de fondo al pasar el ratón */
+    color: #10216f; /* Cambia el color del texto */
+    border: 2px solid #10216f; /* Borde visible en hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    transform: translateY(-2px); /* Sutil elevación al pasar el ratón */
+}
+@media (max-width: 400px) {
+    .recuadroChico, .recuadro {
+        width: 120px; /* Cambia el ancho a 120px en pantallas pequeñas */
+    }
+
+    .servicios h2 {
+        font-size: 2em; /* Reduce el tamaño del título si lo deseas */
+    }
+
+    .servicios p {
+        font-size: 1em; /* Reduce el tamaño del texto si es necesario */
+    }
+}
+
 
 /* ---------------------------------------DIV Sucursales--------------------------------- */
 
+.div-sucursales {
+    background-color: white;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    min-height: 20px;
+    margin-top: 33px;
+    padding: 20px 10px; /* Agrega padding para mayor espacio interno */
+    width: 100%; /* Asegura que ocupe el 100% del ancho de la pantalla */
+    box-sizing: border-box; /* Asegura que el padding no exceda el 100% del ancho */
+}
+
+.div-sucursales p {
+    color: #7dd557; /* Asegura que el texto sea visible en cualquier tamaño de pantalla */
+    margin: 0;
+}
 .sucursales {
+    background-color: white;
+    padding: 50px;
     display: flex;
     align-items: flex-start;
-    background-color: white;
-    margin: 0; /* Elimina margen superior e inferior */
-    padding: 230px 20px;
+    justify-content: space-between;
+    margin-top: 0;
 }
 
-.texto-sucursales h1 {
-    color: #7dd557;
-    font-size: 2.5em;
-    
-}
-
-.texto-sucursales {   
+.texto-sucursales {
     flex: 1;
-    width: 50%;
-    margin-right: 0;
-    margin-top: 20px;
-    text-align: justify;
-    padding: 20px;
-    box-sizing: border-box;
+    text-align: left;
+}
+
+.texto-sucursales h4 {
+    margin-left: 40px;
+    margin-top: 40px;
+    color: #10216f;
+}
+
+.texto-sucursales ul {
+    list-style-type: none;
+    padding: 0;
+    color: #10216f;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 80px;
+}
+
+.imagen-sucursal {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* Alinea el mapa a la izquierda */
+    align-items: flex-start;
+    padding-left: 40px; /* Ajusta la distancia del mapa hacia la izquierda */
+}
+
+.imagen-sucursal img {
+    max-width: 90%;
+    height: auto;
 }
 
 
-.imagen-sucursales img {
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 1000px) {
+    .sucursales {
+        flex-direction: column; /* Mantiene el texto debajo de la imagen */
+        text-align: center;
+    }
+
+    .div-sucursales {
+        font-size: 1.8em; /* Reduce el tamaño de fuente en pantallas pequeñas */
+        padding: 15px 5px; /* Ajusta el padding para pantallas pequeñas */
+    }
+
+    .imagen-sucursal img {
+        max-width: 100%;
+        margin-bottom: 60px;
+    }
+
+    .texto-sucursales p {
+        text-align: center;
+        font-size: 1em;
+        font-weight: center;
+    }
+}
+
+
+.mapa-sucursales {
+    padding: 10px;
+    margin-right: 40px;
+    border: 2px solid #d3d3d3; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados para un mejor estilo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    max-width: 100%; /* Asegura que el mapa no desborde su contenedor */
+}
+
+
+.mapa-sucursales label {
+    color: #10216f;  /* Color del texto */
+    font-weight: bold;  /* Negrita */
+    font-family: 'Trebuchet MS', sans-serif;  /* Fuente Trebuchet MS */
+}
+
+
+#sucursales-select {
+    display: block;
+    margin: 0 auto 10px auto;
+    padding: 10px 200px;  
+    font-size: 1em;
+    font-weight: bold;
+    color:white;
+    background-color: #10216f;
+    border: 2px solid transparent; /* Borde transparente */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.map-container {
+    text-align: center;
+}
+
+#mapa-sucursal {
     width: 100%;
-    display: block; /* Elimina espacios alrededor de la imagen */
-    margin: 0; /* Elimina margen */
+    max-width: 600px;
+    height: 450px;
+    border: 0;
+}
+
+@media(max-width: 400px){
+
+    .mapa-sucursales {
+        width: 95%; /* O ajusta según tus necesidades */   
+    }
+
+    #sucursales-select {
+        display: block;
+        margin: 0 auto 10px auto;
+        font-size: 1em;
+        font-weight: bold;
+        color:white;
+        background-color: #10216f;
+        border: 2px solid transparent; /* Borde transparente */
+        border-radius: 5px; /* Bordes redondeados */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    }
+}
+@media (max-width: 400px) {
+    #sucursales-select {
+        padding: 10px 90px; /* Ajuste de padding para pantallas pequeñas */
+    }
+}
+
+/* ---------------------------------------DIV Contacto--------------------------------- */ 
+.contacto {
+    display: flex;
+    justify-content: space-between;
+    background-color: #10216f;
+    padding: 40px;
+    color: white;
+}
+
+.formulario-contacto {
+    flex: 1;
+    margin-right: 40px;
+}
+.formulario-contacto h2{
+
+    font-size: 2.5em;
+    color:#7dd557;
+    align-items: center;
+    text-align: center;
+}
+
+.informacion-contacto h2 {
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.formulario-contacto form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-contacto label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formulario-contacto input, .formulario-contacto textarea {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 20px;
+    border-radius: 5px; /* Añadir bordes redondeados */
+}
+
+.formulario-contacto button {
+    padding: 12px 20px;
+    background-color: #7dd557;
+    color: #10216f;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-contacto button:hover {
+    background-color: #5ab93d;
+}
+
+.informacion-contacto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.redes-sociales {
+    list-style: none;
+    padding: 0;
+}
+
+.redes-sociales li {
+    margin-bottom: 10px;
+}
+
+.redes-sociales a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.redes-sociales a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 1000px) {
+    .contacto {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .informacion-contacto {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    
+    .formulario-contacto, .informacion-contacto {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .formulario-contacto {
+        margin-right: 0;
+    }
 }
