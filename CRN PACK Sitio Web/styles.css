@@ -613,16 +613,26 @@ nav a {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
     }
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     #sucursales-select {
         padding: 10px 90px; /* Ajuste de padding para pantallas pequeñas */
+    }    
+}
+/*@media (max-width: 1000px) {
+    #sucursales-select {
+        padding: 10px 130px; 
+    }
+    .mapa-sucursales {
+        width: 110%; 
     }
 }
-
+    */
 /* ---------------------------------------DIV Contacto--------------------------------- */ 
+
+
 .contacto {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Asegura que ambos bloques se coloquen uno al lado del otro */
     background-color: #10216f;
     padding: 40px;
     color: white;
@@ -630,23 +640,19 @@ nav a {
 
 .formulario-contacto {
     flex: 1;
-    margin-right: 40px;
+    margin-left: 100px; /* Aumenta el margen izquierdo para mover el formulario a la derecha */
 }
-.formulario-contacto h2{
 
+.formulario-contacto h2 {
     font-size: 2.5em;
-    color:#7dd557;
-    align-items: center;
+    color: #7dd557;
     text-align: center;
-}
-
-.informacion-contacto h2 {
-    font-family: 'Trebuchet MS', sans-serif;
 }
 
 .formulario-contacto form {
     display: flex;
     flex-direction: column;
+    margin-right: 0; /* Remueve el margen para que todo el contenido se ajuste correctamente */
 }
 
 .formulario-contacto label {
@@ -657,12 +663,16 @@ nav a {
 
 .formulario-contacto input, .formulario-contacto textarea {
     background-color: white;
-    color: black;
+    color: #10216f;
     border: none;
     padding: 10px;
     font-size: 1em;
     margin-bottom: 20px;
-    border-radius: 5px; /* Añadir bordes redondeados */
+    border-radius: 5px;
+}
+
+.formulario-contacto textarea {
+    resize: vertical; /* Solo permite redimensionar verticalmente */
 }
 
 .formulario-contacto button {
@@ -674,6 +684,7 @@ nav a {
     cursor: pointer;
     font-size: 1.2em;
     transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
 
 .formulario-contacto button:hover {
@@ -685,50 +696,90 @@ nav a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: left;
+    margin-left: 60px;
+}
+
+.informacion-contacto h2 {
+    font-family: 'Trebuchet MS', sans-serif;
+    color: #7dd557;
+    text-align: left;
 }
 
 .redes-sociales {
     list-style: none;
     padding: 0;
+    display: flex; /* Para que los íconos estén alineados horizontalmente */
+    justify-content: left;
+    gap: 20px; /* Espacio entre los íconos */
 }
 
 .redes-sociales li {
     margin-bottom: 10px;
+    margin-left: 10px;
 }
 
 .redes-sociales a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.5em; /* Tamaño del ícono */
+    transition: color 0.3s ease;
 }
 
 .redes-sociales a:hover {
-    text-decoration: underline;
+    color: #7dd557; /* Cambia el color en hover */
+    text-decoration: none;
 }
 
+
 /* Ajustes para pantallas pequeñas */
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
     .contacto {
         flex-direction: column;
         align-items: center;
     }
-
+    
     .informacion-contacto {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        width: 100%;
         text-align: center;
+        margin-bottom: 10px;
     }
 
-    
-    .formulario-contacto, .informacion-contacto {
-        width: 100%;
-        margin-bottom: 20px;
+    .informacion-contacto h2{
+        text-align: center;
+        font-size: 2em;
+    }
+
+    .redes-sociales {
+        justify-content: center;
     }
     
     .formulario-contacto {
-        margin-right: 0;
+        margin-left: 0; /* Asegura que en pantallas pequeñas el formulario se ajuste */
     }
+    
+    .informacion-contacto {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+/* ---------------------------------------DIV Footer--------------------------------- */
+
+.footer {
+    background-color: #7dd557;
+    text-align: center;
+    padding: 10px;
+    color: #10216f;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.footer-link {
+    color: #10216f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-link:hover {
+    color: white;
 }
