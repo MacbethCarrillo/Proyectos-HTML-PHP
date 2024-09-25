@@ -613,20 +613,21 @@ nav a {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
     }
 }
-@media (max-width: 500px) {
+@media (max-width: 400px) {
     #sucursales-select {
         padding: 10px 90px; /* Ajuste de padding para pantallas pequeñas */
     }    
 }
-/*@media (max-width: 1000px) {
+
+@media (min-width: 400px) and (max-width: 1000px) {
     #sucursales-select {
-        padding: 10px 130px; 
+        padding: 10px 120px; 
     }
     .mapa-sucursales {
         width: 110%; 
     }
 }
-    */
+
 /* ---------------------------------------DIV Contacto--------------------------------- */ 
 
 
