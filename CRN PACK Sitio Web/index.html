@@ -10,7 +10,7 @@
 <body>
     <header>
         <a href="javascript:location.reload()">
-            <img src="logo1.jpg" alt="Logo" class="logo">
+            <img src="logo.jpg" alt="Logo" class="logo">
         </a>
         <button class="menu-btn" onclick="toggleMenu()"></button>
         <div class="nav-container">
@@ -28,17 +28,30 @@
 
     <!-- Carrusel de imágenes -->
     <div class="carousel" id="carousel">
+        <button class="carousel-btn prev-btn" onclick="prevSlide()">&#10094;</button>
         <div class="carousel-images">
-            <img src="publicidad1.jpg" alt="Imagen1">
-            <img src="publicidad2.jpg" alt="Imagen2">
-            <img src="publicidad3.jpg" alt="Imagen3">
+            <div class="carousel-image-container">
+                <img src="publicidad1.jpg" alt="Imagen1">
+                <div class="carousel-text">SERVICIO OCURRE</div>
+            </div>
+            <div class="carousel-image-container">
+                <img src="publicidad2.jpg" alt="Imagen2">
+                <div class="carousel-text">RECIBE EL MISMO DIA</div>
+            </div>
+            <div class="carousel-image-container">
+                <img src="publicidad3.jpg" alt="Imagen3">
+                <div class="carousel-text">SERVICIO A DOMICILIO</div>
+            </div>
         </div>
+        <button class="carousel-btn next-btn" onclick="nextSlide()">&#10095;</button>
         <div class="carousel-dots">
             <button class="dot" data-index="0"></button>
             <button class="dot" data-index="1"></button>
             <button class="dot" data-index="2"></button>
         </div>
     </div>
+    
+
     
     <!-- Sección Nosotros -->
     <div class="nosotros">
