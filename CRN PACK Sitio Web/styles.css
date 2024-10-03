@@ -362,13 +362,19 @@ nav a {
 }
 
 /* Ajustes para pantallas grandes (1500px en adelante) */
-@media (min-width: 1101px) {
+@media (min-width: 1501px) {
     .nosotros {
         align-items: flex-start;
     }
 
     .texto-nosotros {
         width: 100%; /* El texto ahora ocupa el 40% del espacio */
+
+    }
+
+    .texto-nosotros p{
+
+        font-size: 1.5em;               /*AQUIIIIIIIIIIIIIIIIIIIIII ES PARA PANTALLAS MAAAAAS GRANDESSSSSS */
     }
 
     .imagen-nosotros {
