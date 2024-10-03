@@ -3,6 +3,7 @@ let autoSlideInterval;
 const slideWidth = 100 / document.querySelectorAll('.carousel-images img').length; // Ancho dinámico de cada imagen en porcentaje
 const carouselImages = document.querySelector('.carousel-images');
 const dots = document.querySelectorAll('.carousel-dots .dot');
+const isMobile = window.innerWidth <= 630; // Determinar si es pantalla pequeña
 
 function moveToSlide(index) {
     currentIndex = index;
@@ -18,6 +19,18 @@ function updateDots() {
     });
 }
 
+function prevSlide() {
+    if (currentIndex > 0) {
+        moveToSlide(currentIndex - 1);
+    }
+}
+
+function nextSlide() {
+    if (currentIndex < dots.length - 1) {
+        moveToSlide(currentIndex + 1);
+    }
+}
+
 function startAutoSlide() {
     autoSlideInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % dots.length;
@@ -30,13 +43,6 @@ function resetAutoSlide() {
     startAutoSlide();
 }
 
-function toggleMenu() {
-    const navContainer = document.querySelector('.nav-container');
-    const menuBtn = document.querySelector('.menu-btn');
-    navContainer.classList.toggle('active');
-    menuBtn.classList.toggle('active');
-}
-
 function initCarousel() {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
@@ -44,16 +50,76 @@ function initCarousel() {
         });
     });
 
+    if (isMobile) {
+        // Habilitar arrastre solo en pantallas pequeñas
+        carouselImages.addEventListener('touchstart', dragStart);
+        carouselImages.addEventListener('touchend', dragEnd);
+        carouselImages.addEventListener('touchmove', dragMove);
+    }
+
     startAutoSlide();
 }
 
+// Funciones de arrastre para pantallas móviles
+let isDragging = false;
+let startPos = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let animationID;
+
+function dragStart(event) {
+    isDragging = true;
+    startPos = getPositionX(event);
+    animationID = requestAnimationFrame(animation);
+}
+
+function dragEnd() {
+    cancelAnimationFrame(animationID);
+    isDragging = false;
+
+    const movedBy = currentTranslate - prevTranslate;
+
+    if (movedBy < -slideWidth / 3 && currentIndex < dots.length - 1) {
+        currentIndex += 1;
+    }
+
+    if (movedBy > slideWidth / 3 && currentIndex > 0) {
+        currentIndex -= 1;
+    }
+
+    moveToSlide(currentIndex);
+    prevTranslate = currentIndex * -slideWidth;
+    resetAutoSlide();
+}
+
+function dragMove(event) {
+    if (isDragging) {
+        const currentPosition = getPositionX(event);
+        currentTranslate = prevTranslate + (currentPosition - startPos);
+        carouselImages.style.transform = `translateX(${currentTranslate}%)`;
+    }
+}
+
+function getPositionX(event) {
+    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+}
+
+function animation() {
+    if (isDragging) {
+        requestAnimationFrame(animation);
+    }
+}
+
 initCarousel();
+
+
+/* -----------------------MAPA DE GOOGLE SUCURSALES------------------------*/ 
 
 document.addEventListener('DOMContentLoaded', function () {
     const selectElement = document.getElementById('sucursales-select');
     const mapaSucursal = document.getElementById('mapa-sucursal');
 
-    // Establecer el valor por defecto (Culiacán)
+    // Establecer el valor por defecto
     selectElement.value = 'culiacan';
 
     // Cambiar el mapa basado en la selección del combobox
@@ -67,4 +133,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+/* -----------------------BOTON DEL MENU EN CELULAR------------------------*/ 
+function toggleMenu() {
+    const navContainer = document.querySelector('.nav-container');
+    const menuBtn = document.querySelector('.menu-btn');
+    navContainer.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+}
