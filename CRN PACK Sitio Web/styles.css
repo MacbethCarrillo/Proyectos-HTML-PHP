@@ -184,19 +184,43 @@ nav a {
     width: 100%;
     height: auto;
     overflow: hidden;
-    margin-bottom: 0; 
+    margin-bottom: 0;
 }
 
 .carousel-images {
     display: flex;
     transition: transform 0.5s ease-in-out;
     width: 300%;
+    user-select: none; /* Evita que el contenido se seleccione */
+}
+
+.carousel-image-container {
+    position: relative;
+    width: 33.33%; /* Ajusta según el número de imágenes */
 }
 
 .carousel-images img {
-    width: 33.33%;
+    width: 100%; /* Asegúrate de que la imagen ocupe todo el contenedor */
     height: auto;
     display: block;
+    pointer-events: none; /* Evita que el puntero interactúe con la imagen */
+    user-select: none; /* Evita que el contenido se seleccione */
+    -webkit-user-select: none; /* Evita la selección en Safari */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    -moz-user-select: none; /* Firefox */
+}
+
+.carousel-text {
+    position: absolute;
+    top: 50%;
+    left: 140px; /* Ajusta según sea necesario */
+    transform: translateY(-50%);
+    color: white;
+    font-size: 5em; /* Ajusta el tamaño de fuente según sea necesario */
+    font-family: 'Trebuchet MS', sans-serif; /* Fuente personalizada */
+    font-weight: bold; /* Texto en negrita */
+    pointer-events: none; /* Evita la interacción con el texto */
+    user-select: none; /* Evita que el texto se seleccione */
 }
 
 .carousel-dots {
@@ -219,21 +243,61 @@ nav a {
 }
 
 .carousel-dots button.active {
-    background-color: #ffffff; 
+    background-color: #ffffff;
 }
 
-@media(max-width: 400px){
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media(max-width: 1100px) {
+    .carousel-btn {
+        display: none;
+    }
+
+    .carousel-images img {
+        height: 400px;
+    }
 
     .carousel-dots {
         bottom: 20px;
+
     }
 
     .carousel-dots button {
-        width: 5px;
+        width: 12px;
         height: 12px;
     }
 
+    .carousel-text {
+        text-align: center;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
+        font-size: 2.5em; /* Tamaño de fuente grande para pantallas pequeñas */
+    }
 }
+
 
 /* ---------------------------------------DIV NOSOTROS--------------------------------- */
 .nosotros {
